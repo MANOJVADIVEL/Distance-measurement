@@ -1,0 +1,6 @@
+ULTRASONIC SENSOR TO ARDUINO 
+
+Vcc to 5V
+Trig to D2
+Echo to D3
+GND to GND
