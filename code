@@ -1,0 +1,32 @@
+#define trigPin 2
+#define echoPin 3
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+}
+
+void loop() {
+  long duration, distance;
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+ 
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+ 
+  duration = pulseIn(echoPin, HIGH);
+ 
+  // Speed of sound = 343 meters per second = 0.0343 cm/microsecond
+  distance = (duration * 0.0343) / 2; // Divide by 2 because the sound travels to the object and back
+ 
+  if (distance >= 400 || distance <= 0) {
+    Serial.println("Out of range");
+  } else {
+    Serial.print("Distance: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+  }
+  delay(1000); // You can adjust this delay to change the reading frequency
+}
